@@ -38,8 +38,6 @@ OBJ_PATH = obj
 
 LIB_PATH = lib
 
-LIBS_DIR = lib_compiled
-
 LIBFT_PATH = libft
 
 MLX_PATH = minilibx_macos
@@ -85,7 +83,7 @@ OBJS = $(addprefix $(OBJ_PATH)/, $(OBJS_NAME))
 
 LIBFT =	$(LIB_PATH)/$(LIBFT_PATH)
 
-LMLX = $(LIB_PATH)/$(LMLX_PATH)
+LMLX = $(LIB_PATH)/$(MLX_PATH)
 
 #######################
 ###   Objects dir   ###
@@ -110,7 +108,7 @@ $(LIBFT_NAME):
 
 $(LMLX_NAME):
 	@$(MAKE) all -sC $(LMLX)
-	@cp $(LMLX) $(LIBS_DIR)
+	@cp $(addprefix $(LMLX)/, $(LMLX_NAME)) $(LMLX_NAME)
 
 #####################
 ###   Compile.o   ###
@@ -133,7 +131,9 @@ clean:
 
 fclean: clean
 	@$(MAKE) fclean -sC $(LIBFT)
+	@$(MAKE) clean -sC $(LMLX)
 	@rm -rf $(NAME)
 	@rm $(LIBFT_NAME)
+	@rm $(LMLX_NAME)
 
 re: fclean all
