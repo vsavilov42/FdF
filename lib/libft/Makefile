@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/11/15 15:54:01 by vsavilov          #+#    #+#              #
-#    Updated: 2021/11/16 13:19:55 by vsavilov         ###   ########.fr        #
+#    Created: 2021/11/15 16:56:48 by vsavilov          #+#    #+#              #
+#    Updated: 2021/11/16 11:39:26 by vsavilov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,47 +18,70 @@ CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra
 
-MLX = -Lmlx -lmlx -framework OpenGL -framework AppKit
-
-DEBUG: CFLAGS += -fsanitize=address -g3
-
 ########################
 ###   Source items   ###
 ########################
 
-SRCS_NAME = 
+SRCS_NAME = ft_isdigit.c \
+		ft_isalnum.c \
+		ft_isascii.c \
+		ft_isprint.c \
+		ft_isalpha.c \
+		ft_strlen.c \
+		ft_memset.c \
+		ft_bzero.c \
+		ft_memcpy.c \
+		ft_memmove.c \
+		ft_strlcpy.c \
+		ft_strlcat.c \
+		ft_toupper.c \
+		ft_tolower.c \
+		ft_strchr.c	 \
+		ft_strrchr.c \
+		ft_strncmp.c \
+		ft_memchr.c \
+		ft_memcmp.c \
+		ft_strnstr.c \
+		ft_atoi.c \
+		ft_calloc.c \
+		ft_strdup.c \
+		ft_strchr.c \
+		ft_strlcpy.c \
+		ft_strjoin.c \
+		ft_strtrim.c \
+		ft_putchar_fd.c \
+		ft_putstr_fd.c \
+		ft_putendl_fd.c \
+		ft_putnbr_fd.c \
+		ft_itoa.c \
+		ft_substr.c \
+		ft_strmapi.c \
+		ft_striteri.c \
+		ft_split.c \
+		ft_lstnew_bonus.c \
+		ft_lstadd_front_bonus.c \
+		ft_lstsize_bonus.c \
+		ft_lstlast_bonus.c \
+		ft_lstadd_back_bonus.c \
+		ft_lstdelone_bonus.c \
+		ft_lstclear_bonus.c \
+		ft_lstiter_bonus.c \
+		ft_lstmap_bonus.c
+
 
 #######################
 ###   Directories   ###
 #######################
 
-SRC_PATH = src
+SRCDIR = src
 
-OBJ_PATH = obj
-
-LIB_PATH = lib
-
-LIBS_DIR = lib_compiled
-
-LIBFT_PATH = libft
-
-MLX_PATH = minilibx_macos
-
-#####################
-###   Make rule   ###
-#####################
-
-MAKE = make
+OBJDIR = obj
 
 ############################
 ###   Program/s name/s   ###
 ############################
 
-NAME = fdf
-
-LIBFT_NAME = libft.a
-
-LMLX_NAME = libmlx.a
+NAME = libft.a
 
 #################################
 ###   Rules can be executed   ###
@@ -66,61 +89,32 @@ LMLX_NAME = libmlx.a
 
 all: $(NAME)
 
-debug: $(NAME)
-
 ##########################
 ###   Create objects   ###
 ##########################
 
+SRCS = $(addprefix $(SRCDIR)/, $(SRCS_NAME))
+
 OBJS_NAME = $(SRCS_NAME:%.c=%.o)
 
-SRCS = $(addprefix $(SRC_PATH)/, $(SRCS_NAME))
-
-OBJS = $(addprefix $(OBJ_PATH)/, $(OBJS_NAME))
-
-
-#######################
-###   Create libs   ###
-#######################
-
-LIBFT =	$(LIB_PATH)/$(LIBFT_PATH)
-
-LMLX = $(LIB_PATH)/$(LMLX_PATH)
+OBJS = $(addprefix $(OBJDIR)/, $(OBJS_NAME))
 
 #######################
 ###   Objects dir   ###
 #######################
 
-$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c | $(OBJ_PATH)
+$(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
 	@$(CC) $(CFLAGS) -I. -c $< -o $@
 
-$(OBJ_PATH):
-		@mkdir -p $(OBJ_PATH) 2> /dev/null
-
-$(LIBS_DIR):
-		@mkdir -p $(LIBS-DIR) 2> /dev/null
-
-#########################
-###   Compile libs   ###
-#########################
-
-$(LIBFT_NAME):
-	@$(MAKE) all -sC $(LIBFT)
-	@cp -r $(addprefix $(LIBFT)/, $(LIBFT_NAME)) $(LIBFT_NAME)
-
-$(LMLX_NAME):
-	@$(MAKE) all -sC $(LMLX)
-	@cp $(LMLX) $(LIBS_DIR)
+$(OBJDIR):
+		@mkdir -p $(OBJDIR) 2> /dev/null
 
 #####################
 ###   Compile.o   ###
 #####################
 
-.o:.c
-	@$(CC) $(CFLAGS) -Imlx -c $< -o $@
-
-$(NAME): $(LIBFT_NAME) $(LMLX_NAME) $(OBJS)
-	@$(CC) $(CFLAGS) $(MLX) $(OBJS) -o $(NAME)
+$(NAME): $(OBJS)
+	@ar -rcs $(NAME) $(OBJS)
 
 #######################
 ###   Other rules   ###
@@ -129,11 +123,9 @@ $(NAME): $(LIBFT_NAME) $(LMLX_NAME) $(OBJS)
 .PHONY: all clean fclean re
 
 clean:
-	@rm -rf $(OBJ_PATH)
+	@rm -rf $(OBJDIR)
 
 fclean: clean
-	@$(MAKE) fclean -sC $(LIBFT)
 	@rm -rf $(NAME)
-	@rm $(LIBFT_NAME)
 
 re: fclean all
