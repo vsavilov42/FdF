@@ -18,6 +18,8 @@ CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra
 
+CFLAGS += -I ./$(INC_PATH)
+
 MLX = -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 DEBUG: CFLAGS += -fsanitize=address -g3
@@ -35,6 +37,8 @@ SRCS_NAME =
 SRC_PATH = src
 
 OBJ_PATH = obj
+
+INC_PATH = inc
 
 LIB_PATH = lib
 
@@ -90,7 +94,7 @@ LMLX = $(LIB_PATH)/$(MLX_PATH)
 #######################
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c | $(OBJ_PATH)
-	@$(CC) $(CFLAGS) -I. -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJ_PATH):
 		@mkdir -p $(OBJ_PATH) 2> /dev/null

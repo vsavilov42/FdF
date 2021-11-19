@@ -18,6 +18,8 @@ CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra
 
+CFLAGS += -I ./$(INCDIR)
+
 ########################
 ###   Source items   ###
 ########################
@@ -77,6 +79,8 @@ SRCDIR = src
 
 OBJDIR = obj
 
+INCDIR = inc
+
 ############################
 ###   Program/s name/s   ###
 ############################
@@ -104,7 +108,7 @@ OBJS = $(addprefix $(OBJDIR)/, $(OBJS_NAME))
 #######################
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
-	@$(CC) $(CFLAGS) -I. -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJDIR):
 		@mkdir -p $(OBJDIR) 2> /dev/null
