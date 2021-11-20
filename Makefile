@@ -6,7 +6,7 @@
 #    By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/15 15:54:01 by vsavilov          #+#    #+#              #
-#    Updated: 2021/11/20 11:32:42 by Vsavilov         ###   ########.fr        #
+#    Updated: 2021/11/20 11:50:19 by Vsavilov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,14 +63,6 @@ LIBFT_NAME = libft.a
 
 LMLX_NAME = libmlx.a
 
-#################################
-###   Rules can be executed   ###
-#################################
-
-all: $(NAME)
-
-debug: $(NAME)
-
 ##########################
 ###   Create objects   ###
 ##########################
@@ -89,6 +81,14 @@ OBJS = $(addprefix $(OBJ_PATH)/, $(OBJS_NAME))
 LIBFT =	$(LIB_PATH)/$(LIBFT_PATH)
 
 LMLX = $(LIB_PATH)/$(MLX_PATH)
+
+#################################
+###   Rules can be executed   ###
+#################################
+
+all: $(NAME)
+
+debug: $(NAME)
 
 #######################
 ###   Objects dir   ###
