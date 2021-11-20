@@ -1,9 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   structs.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/20 11:10:54 by Vsavilov          #+#    #+#             */
+/*   Updated: 2021/11/20 11:30:46 by Vsavilov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
 typedef struct s_fdf
 {
-
+	void	*mlx;
+	void	*win;
+	void	*image;
+	t_map	*map;
 	t_xyz	*xyz;
 }	t_fdf;
 
@@ -11,15 +26,15 @@ typedef struct s_map
 {
 	int	width;
 	int	height;
-	int *colors;
+	int	*colors;
 }	t_map;
 
 typedef struct s_xyz
 {
-	int x;
-	int y;
-	int z;
-	int color;
+	int	x;
+	int	y;
+	int	z;
+	int	color;
 }	t_xyz;
 
 #endif

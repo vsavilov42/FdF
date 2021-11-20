@@ -6,7 +6,7 @@
 #    By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/15 15:54:01 by vsavilov          #+#    #+#              #
-#    Updated: 2021/11/16 13:19:55 by vsavilov         ###   ########.fr        #
+#    Updated: 2021/11/20 11:32:42 by Vsavilov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ DEBUG: CFLAGS += -fsanitize=address -g3
 ###   Source items   ###
 ########################
 
-SRCS_NAME = 
+SRCS_NAME = fdf.c \
+	init_struct.c
 
 #######################
 ###   Directories   ###
@@ -119,7 +120,7 @@ $(LMLX_NAME):
 #####################
 
 .o:.c
-	@$(CC) $(CFLAGS) -Imlx -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(LIBFT_NAME) $(LMLX_NAME) $(OBJS)
 	@$(CC) $(CFLAGS) $(MLX) $(OBJS) -o $(NAME)
