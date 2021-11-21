@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:10:54 by Vsavilov          #+#    #+#             */
-/*   Updated: 2021/11/20 11:30:46 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2021/11/21 17:49:50 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,19 @@ typedef struct s_fdf
 {
 	void	*mlx;
 	void	*win;
-	void	*image;
-	t_map	*map;
-	t_xyz	*xyz;
+	struct	s_img	*img;
+	struct	s_map	*map;
+	struct	s_xyz	*xyz;
 }	t_fdf;
+
+typedef	struct s_img
+{
+	void	*img;
+	char	*addrs;
+	int	pxlbit;
+	int	ln_byt;
+	int	endian;
+}
 
 typedef struct s_map
 {

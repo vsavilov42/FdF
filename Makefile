@@ -6,9 +6,19 @@
 #    By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/15 15:54:01 by vsavilov          #+#    #+#              #
-#    Updated: 2021/11/20 11:50:19 by Vsavilov         ###   ########.fr        #
+#    Updated: 2021/11/21 13:48:15 by Vsavilov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+############################
+###   Program/s name/s   ###
+############################
+
+NAME = fdf
+
+LIBFT_NAME = libft.a
+
+LMLX_NAME = libmlx.a
 
 ##############################
 ###   Compiler and flags   ###
@@ -24,16 +34,9 @@ MLX = -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 DEBUG: CFLAGS += -fsanitize=address -g3
 
-########################
-###   Source items   ###
-########################
-
-SRCS_NAME = fdf.c \
-	init_struct.c
-
-#######################
-###   Directories   ###
-#######################
+#################
+###   Paths   ###
+#################
 
 SRC_PATH = src
 
@@ -47,21 +50,18 @@ LIBFT_PATH = libft
 
 MLX_PATH = minilibx_macos
 
+########################
+###   Source items   ###
+########################
+
+SRCS_NAME = fdf.c \
+	init_struct.c
+
 #####################
 ###   Make rule   ###
 #####################
 
 MAKE = make
-
-############################
-###   Program/s name/s   ###
-############################
-
-NAME = fdf
-
-LIBFT_NAME = libft.a
-
-LMLX_NAME = libmlx.a
 
 ##########################
 ###   Create objects   ###
