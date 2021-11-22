@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:10:54 by Vsavilov          #+#    #+#             */
-/*   Updated: 2021/11/21 17:49:50 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2021/11/22 12:07:45 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef	struct s_img
 	int	pxlbit;
 	int	ln_byt;
 	int	endian;
-}
+}	t_img;
 
 typedef struct s_map
 {

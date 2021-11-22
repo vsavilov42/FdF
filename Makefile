@@ -6,7 +6,7 @@
 #    By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/15 15:54:01 by vsavilov          #+#    #+#              #
-#    Updated: 2021/11/21 13:48:15 by Vsavilov         ###   ########.fr        #
+#    Updated: 2021/11/22 17:20:24 by Vsavilov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,11 +28,13 @@ CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra
 
-CFLAGS += -I ./$(INC_PATH)
+CFLAGS += -I ./$(INC_PATH) -I ./$(LIBFT)/inc -I ./$(LMLX)
 
-MLX = -Lmlx -lmlx -framework OpenGL -framework AppKit
+CFLAGS += -O3
 
-DEBUG: CFLAGS += -fsanitize=address -g3
+MLX = -framework OpenGL -framework AppKit
+
+CFLAGS += -fsanitize=address -g3
 
 #################
 ###   Paths   ###
@@ -95,50 +97,47 @@ debug: $(NAME)
 #######################
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c | $(OBJ_PATH)
-	@$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJ_PATH):
-		@mkdir -p $(OBJ_PATH) 2> /dev/null
+	mkdir -p $(OBJ_PATH) 2> /dev/null
 
 $(LIBS_DIR):
-		@mkdir -p $(LIBS-DIR) 2> /dev/null
+	mkdir -p $(LIBS-DIR) 2> /dev/null
 
 #########################
 ###   Compile libs   ###
 #########################
 
 $(LIBFT_NAME):
-	@$(MAKE) all -sC $(LIBFT)
-	@cp -r $(addprefix $(LIBFT)/, $(LIBFT_NAME)) $(LIBFT_NAME)
+	$(MAKE) all -sC $(LIBFT)
+	cp -r $(addprefix $(LIBFT)/, $(LIBFT_NAME)) $(LIBFT_NAME)
 
 $(LMLX_NAME):
-	@$(MAKE) all -sC $(LMLX)
-	@cp $(addprefix $(LMLX)/, $(LMLX_NAME)) $(LMLX_NAME)
+	$(MAKE) all -sC $(LMLX)
+	cp $(addprefix $(LMLX)/, $(LMLX_NAME)) $(LMLX_NAME)
 
 #####################
 ###   Compile.o   ###
 #####################
 
-.o:.c
-	@$(CC) $(CFLAGS) -c $< -o $@
-
-$(NAME): $(LIBFT_NAME) $(LMLX_NAME) $(OBJS)
-	@$(CC) $(CFLAGS) $(MLX) $(OBJS) -o $(NAME)
+$(NAME): $(LMLX_NAME) $(LIBFT_NAME) $(OBJS) 
+	$(CC) $(CFLAGS) $(MLX) $(OBJS) -o $(NAME) $(LMLX_NAME) $(LIBFT_NAME)
 
 #######################
 ###   Other rules   ###
 #######################
 
-.PHONY: all clean fclean re
-
 clean:
-	@rm -rf $(OBJ_PATH)
+	rm -rf $(OBJ_PATH)
 
 fclean: clean
-	@$(MAKE) fclean -sC $(LIBFT)
-	@$(MAKE) clean -sC $(LMLX)
-	@rm -rf $(NAME)
-	@rm $(LIBFT_NAME)
-	@rm $(LMLX_NAME)
+	$(MAKE) fclean -sC $(LIBFT)
+	$(MAKE) clean -sC $(LMLX)
+	rm -rf $(NAME)
+	rm $(LIBFT_NAME)
+	rm $(LMLX_NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re

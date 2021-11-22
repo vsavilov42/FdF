@@ -6,13 +6,15 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:07:29 by Vsavilov          #+#    #+#             */
-/*   Updated: 2021/11/20 11:07:35 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2021/11/22 16:50:35 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
+# include <libft.h>
+# include <mlx.h>
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
