@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   functions.h                                        :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
+/*   By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/20 11:10:35 by Vsavilov          #+#    #+#             */
-/*   Updated: 2021/11/22 18:20:33 by Vsavilov         ###   ########.fr       */
+/*   Created: 2021/09/29 18:15:31 by vsavilov          #+#    #+#             */
+/*   Updated: 2021/11/22 18:38:45 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FUNCTIONS_H
-# define FUNCTIONS_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
+# ifndef FDM
+#  define FDM 2048
+# endif
 
-void	init_structs();
-void	init_fdf(t_fdf	*fdf);
-void	init_map(t_map	*map);
-void	init_xyz(t_xyz	*xyz);
-void	init_img(t_img	*img);
-void	parse_map();
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
 
+char	*get_next_line(int fd);
+char	*get_current_line(char **str);
 
 #endif
