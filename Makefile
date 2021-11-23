@@ -6,7 +6,7 @@
 #    By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/15 15:54:01 by vsavilov          #+#    #+#              #
-#    Updated: 2021/11/22 19:58:07 by Vsavilov         ###   ########.fr        #
+#    Updated: 2021/11/23 12:35:37 by Vsavilov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ CFLAGS += -O3
 
 MLX = -framework OpenGL -framework AppKit
 
-#CFLAGS += -fsanitize=address -g3
+##CFLAGS += -fsanitize=address -g3
 
 #################
 ###   Paths   ###
@@ -57,7 +57,10 @@ MLX_PATH = minilibx_macos
 ########################
 
 SRCS_NAME = fdf.c \
-	init_struct.c
+	init_struct.c \
+	get_next_line.c \
+	keys_close.c \
+	read_file.c
 
 #####################
 ###   Make rule   ###
