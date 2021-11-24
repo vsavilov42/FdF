@@ -1,11 +1,5 @@
 #include <fdf.h>
 
-void	mlx_control_keys(t_fdf *fdf)
-{
-	mlx_key_hook(fdf->win, key_hook, fdf);
-	mlx_hook(fdf->win, 17, 1L<<17, x_close, fdf);
-}
-
 int	key_hook(int keycode)
 {
 	if (keycode == 53)

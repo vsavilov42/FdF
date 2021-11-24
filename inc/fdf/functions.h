@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:10:35 by Vsavilov          #+#    #+#             */
-/*   Updated: 2021/11/23 13:55:27 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2021/11/24 14:15:40 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,22 @@ void	init_img(t_img	*img);
 
 void	parse_map(t_fdf *fdf, char *map);
 char	**save_map(char *map);
+int	count_lines(char *map);
 
 /* keys_close.c */
 
-void	mlx_control_keys(t_fdf *fdf);
 int	key_hook(int keycode);
 int	x_close(int keycode, t_fdf *fdf);
+
+/* error_msg.c */
+
+int	tmarg(void);
+int	invmap(void);
+
+/* mlx_functions.c */
+
+void	my_mlx_put_pixel(t_img *img, t_xyz *xyz);
+void	mlx_control_keys(t_fdf *fdf);
+void	mlx_start_img(t_fdf *fdf);
 
 #endif
