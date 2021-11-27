@@ -2,9 +2,8 @@
 
 void	parse_map(t_fdf *fdf, char *cmap)
 {
-	fdf->map = malloc(sizeof(t_map));
 	init_map(fdf->map);
-	fdf->map->cmap = save_map(cmap);
+	fdf->map.cmap = save_map(cmap);
 }
 
 char	**save_map(char *map)

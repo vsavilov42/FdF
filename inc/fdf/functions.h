@@ -17,9 +17,9 @@
 
 void	init_structs();
 void	init_fdf(t_fdf	*fdf);
-void	init_map(t_map	*map);
-void	init_xyz(t_xyz	*xyz);
-void	init_img(t_img	*img);
+void	init_map(t_map	map);
+void	init_xyz(t_xyz	xyz);
+void	init_img(t_img	img);
 
 /* read_file.c */
 
@@ -39,7 +39,7 @@ int	invmap(void);
 
 /* mlx_functions.c */
 
-void	my_mlx_put_pixel(t_img *img, t_xyz *xyz);
+void	my_mlx_put_pixel(t_img img, t_xyz xyz);
 void	mlx_control_keys(t_fdf *fdf);
 void	mlx_start_img(t_fdf *fdf);
 

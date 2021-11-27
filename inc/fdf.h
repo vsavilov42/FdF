@@ -22,6 +22,7 @@
 # include <errno.h>
 # include <fdf/get_next_line.h>
 # include <fdf/colors.h>
+# include <fdf/macros.h>
 # include <fdf/structs.h>
 # include <fdf/functions.h>
 

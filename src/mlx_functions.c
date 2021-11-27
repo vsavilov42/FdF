@@ -2,24 +2,33 @@
 
 void	mlx_start_img(t_fdf *fdf)
 {
-	printf("->%p\n", fdf);
 	mlx_control_keys(fdf);
-	printf("-->%p\n", fdf->img);
-	printf("->%p\n", &fdf->img->addrs);
-	
-	fdf->img->addrs = mlx_get_data_addr(&fdf->img->img, &fdf->img->bpp, &fdf->img->ln_len, &fdf->img->endian);
-	
-	//printf("->%s\n", fdf->img->addrs);
-	//my_mlx_put_pixel(fdf->img, fdf->xyz);
-	//mlx_put_image_to_window(fdf->mlx, fdf->win, fdf->img->img, 0, 0);
+	fdf->img.addrs = mlx_get_data_addr(fdf->img.img, &fdf->img.bpp, &fdf->img.ln_len, &fdf->img.endian);	
+	my_mlx_put_pixel(fdf->img, fdf->xyz);
+	mlx_put_image_to_window(fdf->mlx, fdf->win, fdf->img.img, fdf->xyz.x, fdf->xyz.y);
 }
 
-void	my_mlx_put_pixel(t_img *img, t_xyz *xyz)
+void	my_mlx_put_pixel(t_img img, t_xyz xyz)
 {
-	char *dst;
+	int pixel;
 
-	dst = img->addrs + (xyz->y * img->ln_len + xyz->x * (img->bpp / 8));
-	*(unsigned int*)dst = xyz->color;
+	if (xyz.y >= WIN_H || xyz.x >= WIN_H || xyz.y < 0 || xyz.z < 0)
+		return ;
+	pixel = xyz.y * img.ln_len + xyz.x * (img.bpp / 8);
+	if (img.endian == 0)
+	{
+		img.addrs[pixel + 0] = (xyz.color) & 0xFF;
+		img.addrs[pixel + 1] = (xyz.color >> 8) & 0xFF;
+		img.addrs[pixel + 2] = (xyz.color >> 16) & 0xFF;
+		img.addrs[pixel + 3] = (xyz.color >> 24);	
+	}
+	else if (img.endian == 1)
+	{
+		img.addrs[pixel + 0] = (xyz.color >> 24);
+		img.addrs[pixel + 1] = (xyz.color >> 16) & 0xFF;
+		img.addrs[pixel + 2] = (xyz.color >> 8) & 0xFF;
+		img.addrs[pixel + 3] = (xyz.color) & 0xFF;	
+	}
 }
 
 void	mlx_control_keys(t_fdf *fdf)

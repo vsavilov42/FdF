@@ -13,15 +13,6 @@
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
-typedef struct s_fdf
-{
-	void	*mlx;
-	void	*win;
-	struct	s_img	*img;
-	struct	s_map	*map;
-	struct	s_xyz	*xyz;
-}	t_fdf;
-
 typedef	struct s_img
 {
 	void	*img;
@@ -46,5 +37,14 @@ typedef struct s_xyz
 	int	z;
 	int	color;
 }	t_xyz;
+
+typedef struct s_fdf
+{
+	void	*mlx;
+	void	*win;
+	struct	s_img	img;
+	struct	s_map	map;
+	struct	s_xyz	xyz;
+}	t_fdf;
 
 #endif

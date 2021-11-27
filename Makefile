@@ -26,7 +26,7 @@ LMLX_NAME = libmlx.a
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra
+#CFLAGS = -Wall -Werror -Wextra
 
 CFLAGS += -I ./$(INC_PATH) -I ./$(LIBFT)/inc -I ./$(LMLX)
 
