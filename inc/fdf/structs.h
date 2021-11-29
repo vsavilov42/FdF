@@ -26,7 +26,6 @@ typedef struct s_map
 {
 	int	width;
 	int	height;	
-	int	*colors;
 	char	**cmap;
 }	t_map;
 
@@ -42,6 +41,8 @@ typedef struct s_fdf
 {
 	void	*mlx;
 	void	*win;
+	int	**cord;
+	int	**colors;
 	struct	s_img	img;
 	struct	s_map	map;
 	struct	s_xyz	xyz;

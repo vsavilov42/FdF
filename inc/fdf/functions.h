@@ -18,14 +18,14 @@
 void	init_structs();
 void	init_fdf(t_fdf	*fdf);
 void	init_map(t_map	map);
-void	init_xyz(t_xyz	xyz);
+void	init_xyz(t_fdf *fdf);
 void	init_img(t_img	img);
 
 /* read_file.c */
 
 void	parse_map(t_fdf *fdf, char *map);
-char	**save_map(char *map);
-int	count_lines(char *map);
+void	**save_map(char *map);
+int	count_nums(t_fdf *fdf, char *map);
 
 /* keys_close.c */
 

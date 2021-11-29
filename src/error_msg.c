@@ -11,3 +11,9 @@ int invmap(void)
 	perror("Invalid map");
 	return (1);
 }
+
+int emap(void)
+{
+	perror("Empty map");
+	return (1);
+}

@@ -2,7 +2,7 @@
 
 int	key_hook(int keycode)
 {
-	if (keycode == 53)
+	if (keycode == ESC)
 		exit(0);
 	return (0);
 }

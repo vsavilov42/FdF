@@ -11,4 +11,10 @@
 # define WIN_H 720
 # endif
 
+/* Keys */
+
+# ifndef ESC
+#  define ESC 53
+# endif
+
 #endif
