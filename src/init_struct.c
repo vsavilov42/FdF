@@ -29,8 +29,8 @@ void	init_map(t_map map)
 
 void	init_xyz(t_fdf *fdf)
 {
-	fdf->xyz.x = 100;
-	fdf->xyz.y = 100;
+	fdf->xyz.x = 0;
+	fdf->xyz.y = 0;
 	fdf->xyz.z = 0;
 	fdf->xyz.color = WHITE;
 }

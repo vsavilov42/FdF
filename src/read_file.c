@@ -3,13 +3,64 @@
 void	parse_map(t_fdf *fdf, char *cmap)
 {
 	init_map(fdf->map);
-	//save_map(fdf, cmap);
-	//printf("%s\n", fdf->map.cmap[4]);
-	//save_num_color(fdf);
-	//printf("%s\n", fdf->map.cmap[0]);
+	open_map(fdf, cmap);
+	memory_map(fdf);
+	cord_colors(fdf, cmap);
 }
 
-/*void	save_map(char *map)
+int	get_color(char *clr)
+{
+	while ((*clr && ft_isdigit(*clr)) || *clr == '+'|| *clr == '-' || *clr == ',')
+		clr++;
+	if (*clr && (*clr == 'x'))
+		return (hex_color(clr + 1));
+	else
+		return (WHITE);
+	return (0);
+}
+
+void	cord_colors(t_fdf *fdf, char *cmap)
+{
+	int fd;
+	int x;
+	int y;
+	char *ln;
+	char **split;
+
+	x = -1;
+	fd = open(cmap, O_RDONLY);
+	while (fdf->height - 1 > ++x)
+	{
+		ln = get_next_line(fd);
+		split = ft_split(ln, ' ');
+		y = -1;
+		while (fdf->width - 1 > y++)
+		{
+			fdf->cord[x][y] = ft_atoi(split[y]);
+			//printf("CORD X Y --> %d\n", fdf->cord[x][y]);
+			fdf->colors[x][y] = get_color(split[y]);
+		}
+		free_split(split);
+		free(ln);
+	}
+	close(fd);
+}
+
+void	memory_map(t_fdf *fdf)
+{
+	int i;
+
+	i = -1;
+	fdf->cord = (int **)malloc(sizeof(int *) * fdf->height);
+	fdf->colors = (int **)malloc(sizeof(int *) * fdf->height);
+	while (fdf->width > i++)
+	{
+		fdf->cord[i] = (int *)malloc(sizeof(int *) * fdf->width);
+		fdf->colors[i] = (int *)malloc(sizeof(int *) * fdf->width);
+	}
+}
+
+void	open_map(t_fdf *fdf, char *map)
 {
 	int fd;
 	char *ln;
@@ -18,95 +69,15 @@ void	parse_map(t_fdf *fdf, char *cmap)
 	if (fd < 0)
 		exit(invmap());
 	ln = get_next_line(fd);
-	fdf->map.width = count_nums(fdf, ln);
+	fdf->width = count_nums(ln);
 	while (ln)
 	{
-		if (count_nums(fdf, ln) != fdf->map.width && fdf->map.width != 0)
+		if (count_nums(ln) != fdf->width && fdf->width != 0)
 			exit(invmap());
-		fdf->map.height++;
+		fdf->height++;
 		free(ln);
 		ln = get_next_line(fd);
 	}
 	free(ln);
-}
-
-int	count_nums(t_fdf *fdf, char *ln)
-{
-	int num;
-	char **split;
-
-	if (!ln)
-		exit(emap);
-	split = ft_split(ln, ' ');
-	num = 0;
-	while (split[num])
-		num++;
-	free_split(split);
-	return (num);
-}
-
-void	save_num_color(t_fdf *fdf)
-{
-	int x;
-	int y;
-	char **line;
-
-	x = 0;
-	y = 0;
-	fdf->cord = malloc(sizeof(int *) *);
-	while(fdf->map.cmap)
-	{
-		line = malloc(sizeof(char) * ft_strlen(fdf->map.cmap[x]));
-		line = ft_split(fdf->map.cmap[x], ' ');
-		while (line)
-		{
-			fdf->cord[x][y] = ft_atoi(line[y]);
-			y++;
-		}
-		x++;
-	}
-}
-
-char	**save_map(char *map)
-{
-	int i;
-	int fd;
-	char **cmap;
-
-	cmap = ft_calloc(1, sizeof(char *) * (count_lines(map) + 1));
-	if (!cmap)
-		return (NULL);
-	fd = open(map, O_RDONLY);
-	i = 0;
-	map = get_next_line(fd);
-	while (map)
-	{
-		cmap[i] = ft_strdup(map);
-		free (map);
-		map = get_next_line(fd);
-		i++;
-	}
 	close(fd);
-	free(map);
-	return (cmap);
 }
-
-int	count_lines(char *map)
-{
-	int lines;
-	int fd;
-
-	fd = open(map, O_RDONLY);
-	if (fd < 0)
-		exit(invmap());
-	lines = 0;
-	map = get_next_line(fd);
-	while(map && ++lines)
-	{
-		free(map);
-		map = get_next_line(fd);
-	}
-	free(map);
-	close(fd);
-	return (lines);
-}*/

@@ -24,8 +24,10 @@ void	init_img(t_img	img);
 /* read_file.c */
 
 void	parse_map(t_fdf *fdf, char *map);
-void	**save_map(char *map);
-int	count_nums(t_fdf *fdf, char *map);
+void	open_map(t_fdf *fdf, char *map);
+void	memory_map(t_fdf *fdf);
+void	cord_colors(t_fdf *fdf, char *cmap);
+int	get_color(char *clr);
 
 /* keys_close.c */
 
@@ -36,11 +38,19 @@ int	x_close(int keycode, t_fdf *fdf);
 
 int	tmarg(void);
 int	invmap(void);
+int	emap(void);
 
 /* mlx_functions.c */
 
 void	my_mlx_put_pixel(t_img img, t_xyz xyz);
 void	mlx_control_keys(t_fdf *fdf);
 void	mlx_start_img(t_fdf *fdf);
+
+/* utils.c */
+
+void	free_split(char **split);
+int	count_nums(char *map);
+int	hex_color(char	*clr);
+
 
 #endif

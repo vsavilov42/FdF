@@ -1,6 +1,12 @@
 #ifndef MACROS_H
 # define MACROS_H
 
+/* Hex */
+
+# ifndef HEX
+#  define HEX "0123456789abcdef"
+# endif
+
 /* Window size */
 
 # ifndef WIN_W

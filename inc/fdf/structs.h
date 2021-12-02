@@ -41,6 +41,8 @@ typedef struct s_fdf
 {
 	void	*mlx;
 	void	*win;
+	int	width;
+	int	height;
 	int	**cord;
 	int	**colors;
 	struct	s_img	img;

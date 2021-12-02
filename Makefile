@@ -26,7 +26,7 @@ LMLX_NAME = libmlx.a
 
 CC = gcc
 
-#CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra
 
 CFLAGS += -I ./$(INC_PATH) -I ./$(LIBFT)/inc -I ./$(LMLX)
 
@@ -62,6 +62,7 @@ SRCS_NAME = fdf.c \
 	keys_close.c \
 	error_msg.c \
 	mlx_functions.c \
+	utils.c \
 	read_file.c
 
 #####################

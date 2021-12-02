@@ -2,17 +2,24 @@
 
 void	mlx_start_img(t_fdf *fdf)
 {
+//	int i = -1;
 	mlx_control_keys(fdf);
 	fdf->img.addrs = mlx_get_data_addr(fdf->img.img, &fdf->img.bpp, &fdf->img.ln_len, &fdf->img.endian);	
+/*	while (++i < 720)
+	{
+		my_mlx_put_pixel(fdf->img, fdf->xyz);
+		fdf->xyz.x++;
+		fdf->xyz.y++;
+	}*/
 	my_mlx_put_pixel(fdf->img, fdf->xyz);
-	mlx_put_image_to_window(fdf->mlx, fdf->win, fdf->img.img, fdf->xyz.x, fdf->xyz.y);
+	mlx_put_image_to_window(fdf->mlx, fdf->win, fdf->img.img, 0, 0);
 }
 
 void	my_mlx_put_pixel(t_img img, t_xyz xyz)
 {
 	int pixel;
 
-	if (xyz.y >= WIN_H || xyz.x >= WIN_H || xyz.y < 0 || xyz.z < 0)
+	if (xyz.y >= WIN_H || xyz.x >= WIN_H || xyz.x < 0 || xyz.y < 0)
 		return ;
 	pixel = xyz.y * img.ln_len + xyz.x * (img.bpp / 8);
 	if (img.endian == 0)
