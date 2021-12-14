@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:10:54 by Vsavilov          #+#    #+#             */
-/*   Updated: 2021/11/23 13:58:09 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2021/12/13 23:41:59 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ typedef	struct s_img
 typedef struct s_map
 {
 	int	width;
-	int	height;	
+	int	height;
+	int	max_z;
+	int	min_z;
 	char	**cmap;
 }	t_map;
 

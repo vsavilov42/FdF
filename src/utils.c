@@ -1,7 +1,5 @@
 #include <fdf.h>
 
-//hacer atoi base
-
 int	hex_color(char *clr)
 {
 	int color;
@@ -10,9 +8,7 @@ int	hex_color(char *clr)
 	i = -1;
 	while (clr[++i])
 		clr[i] = ft_tolower(clr[i]);
-	color = ft_atoi_base(clr);
-	//printf("%d\n", color);
-
+	color = ft_atoi_base(clr, HEX);
 	return (color);
 }
 
@@ -39,4 +35,24 @@ int	count_nums(char *ln)
 		num++;
 	free_split(split);
 	return (num);
+}
+
+void	min_max_z(t_fdf *fdf)
+{
+	int x;
+	int y;
+
+	x = 0;
+	while (++x < fdf->map.height)
+	{
+		y = -1;
+		while (++y < fdf->map.width)
+		{
+			printf("aaaaaaaaaa%d\n", fdf->cord[x][y]);
+			if (fdf->cord[x][y] < fdf->map.min_z)
+				fdf->map.min_z = fdf->cord[x][y];
+			else if (fdf->cord[x][y] > fdf->map.max_z)
+				fdf->map.max_z = fdf->cord[x][y];
+		}
+	}
 }

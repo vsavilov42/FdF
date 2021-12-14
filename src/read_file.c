@@ -2,10 +2,10 @@
 
 void	parse_map(t_fdf *fdf, char *cmap)
 {
-	init_map(fdf->map);
 	open_map(fdf, cmap);
 	memory_map(fdf);
 	cord_colors(fdf, cmap);
+	min_max_z(fdf);
 }
 
 int	get_color(char *clr)
@@ -27,17 +27,17 @@ void	cord_colors(t_fdf *fdf, char *cmap)
 	char *ln;
 	char **split;
 
-	x = -1;
+	x = 0;
 	fd = open(cmap, O_RDONLY);
-	while (fdf->height - 1 > ++x)
+	while (++x < fdf->height)
 	{
 		ln = get_next_line(fd);
 		split = ft_split(ln, ' ');
 		y = -1;
-		while (fdf->width - 1 > y++)
+		while (++y < fdf->width)
 		{
+			printf("%d\n", fdf->cord[x][y]);
 			fdf->cord[x][y] = ft_atoi(split[y]);
-			//printf("CORD X Y --> %d\n", fdf->cord[x][y]);
 			fdf->colors[x][y] = get_color(split[y]);
 		}
 		free_split(split);
@@ -53,10 +53,10 @@ void	memory_map(t_fdf *fdf)
 	i = -1;
 	fdf->cord = (int **)malloc(sizeof(int *) * fdf->height);
 	fdf->colors = (int **)malloc(sizeof(int *) * fdf->height);
-	while (fdf->width > i++)
+	while (++i < fdf->height)
 	{
-		fdf->cord[i] = (int *)malloc(sizeof(int *) * fdf->width);
-		fdf->colors[i] = (int *)malloc(sizeof(int *) * fdf->width);
+		fdf->cord[i] = (int *)malloc(sizeof(int) * fdf->width);
+		fdf->colors[i] = (int *)malloc(sizeof(int) * fdf->width);
 	}
 }
 

@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_struct.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/13 23:37:59 by Vsavilov          #+#    #+#             */
+/*   Updated: 2021/12/14 00:00:31 by Vsavilov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <fdf.h>
 
 void	init_structs(t_fdf *fdf)
-{	
-	init_xyz(fdf);
+{
+	init_xyz(fdf->xyz);
 	init_img(fdf->img);
 	init_fdf(fdf);
 }
@@ -21,16 +33,16 @@ void	init_img(t_img img)
 	img.ln_len = 0;
 }
 
-void	init_map(t_map map)
+/*void	init_map(t_map map)
 {
-	map.width = WIN_W;
-	map.height = WIN_H;
-}
+	map.max_z = 0;
+	map.min_z = 0;
+}*/
 
-void	init_xyz(t_fdf *fdf)
+void	init_xyz(t_xyz xyz)
 {
-	fdf->xyz.x = 0;
-	fdf->xyz.y = 0;
-	fdf->xyz.z = 0;
-	fdf->xyz.color = WHITE;
+	xyz.x = 0;
+	xyz.y = 0;
+	xyz.z = 0;
+	xyz.color = WHITE;
 }
