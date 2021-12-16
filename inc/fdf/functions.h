@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:10:35 by Vsavilov          #+#    #+#             */
-/*   Updated: 2021/12/14 00:00:46 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2021/12/15 17:34:10 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 /* init_struct.c */
 
-void	init_structs();
+void	init_structs(t_fdf *fdf);
 void	init_fdf(t_fdf	*fdf);
 //void	init_map(t_map	map);
 void	init_xyz(t_xyz xyz);

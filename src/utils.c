@@ -42,13 +42,12 @@ void	min_max_z(t_fdf *fdf)
 	int x;
 	int y;
 
-	x = 0;
-	while (++x < fdf->map.height)
+	x = -1;
+	while (++x < fdf->height)
 	{
 		y = -1;
-		while (++y < fdf->map.width)
+		while (++y < fdf->width)
 		{
-			printf("aaaaaaaaaa%d\n", fdf->cord[x][y]);
 			if (fdf->cord[x][y] < fdf->map.min_z)
 				fdf->map.min_z = fdf->cord[x][y];
 			else if (fdf->cord[x][y] > fdf->map.max_z)

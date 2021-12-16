@@ -27,7 +27,7 @@ void	cord_colors(t_fdf *fdf, char *cmap)
 	char *ln;
 	char **split;
 
-	x = 0;
+	x = -1;
 	fd = open(cmap, O_RDONLY);
 	while (++x < fdf->height)
 	{
@@ -36,7 +36,6 @@ void	cord_colors(t_fdf *fdf, char *cmap)
 		y = -1;
 		while (++y < fdf->width)
 		{
-			printf("%d\n", fdf->cord[x][y]);
 			fdf->cord[x][y] = ft_atoi(split[y]);
 			fdf->colors[x][y] = get_color(split[y]);
 		}
@@ -51,12 +50,12 @@ void	memory_map(t_fdf *fdf)
 	int i;
 
 	i = -1;
-	fdf->cord = (int **)malloc(sizeof(int *) * fdf->height);
-	fdf->colors = (int **)malloc(sizeof(int *) * fdf->height);
+	fdf->cord = (int **)ft_calloc(1, (sizeof(int *) * fdf->height));
+	fdf->colors = (int **)ft_calloc(1, (sizeof(int *) * fdf->height));
 	while (++i < fdf->height)
 	{
-		fdf->cord[i] = (int *)malloc(sizeof(int) * fdf->width);
-		fdf->colors[i] = (int *)malloc(sizeof(int) * fdf->width);
+		fdf->cord[i] = (int *)ft_calloc(1, (sizeof(int) * fdf->width));
+		fdf->colors[i] = (int *)ft_calloc(1, (sizeof(int) * fdf->width));
 	}
 }
 
