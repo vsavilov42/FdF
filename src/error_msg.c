@@ -17,3 +17,9 @@ int emap(void)
 	perror("Empty map");
 	return (1);
 }
+
+int eang(void)
+{
+	perror("Error struct initialization");
+	return (1);
+}

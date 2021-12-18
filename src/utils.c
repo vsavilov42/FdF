@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/17 18:22:02 by Vsavilov          #+#    #+#             */
+/*   Updated: 2021/12/17 18:23:05 by Vsavilov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <fdf.h>
 
 int	hex_color(char *clr)
 {
-	int color;
-	int i;
+	int	color;
+	int	i;
 
 	i = -1;
 	while (clr[++i])
@@ -14,18 +26,18 @@ int	hex_color(char *clr)
 
 void	free_split(char **split)
 {
-	int i;
+	int	i;
 
 	i = -1;
-	while(split[++i])
+	while (split[++i])
 		free(split[i]);
 	free(split);
 }
 
 int	count_nums(char *ln)
 {
-	int num;
-	char **split;
+	int		num;
+	char	**split;
 
 	if (!ln)
 		exit(emap());
@@ -39,8 +51,8 @@ int	count_nums(char *ln)
 
 void	min_max_z(t_fdf *fdf)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	x = -1;
 	while (++x < fdf->height)

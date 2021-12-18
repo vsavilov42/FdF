@@ -6,12 +6,24 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:10:54 by Vsavilov          #+#    #+#             */
-/*   Updated: 2021/12/13 23:41:59 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2021/12/17 17:00:00 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
+
+typedef struct s_ang
+{
+	float	base;
+	float	zoom;
+	float	ang_x;
+	float	ang_y;
+	float	ang_z;
+	int	i_x;
+	int	i_y;
+	int	isom;
+}	t_ang;
 
 typedef	struct s_img
 {

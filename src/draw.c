@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keys_close.c                                       :+:      :+:    :+:   */
+/*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/17 18:21:31 by Vsavilov          #+#    #+#             */
-/*   Updated: 2021/12/17 18:21:47 by Vsavilov         ###   ########.fr       */
+/*   Created: 2021/12/17 18:22:17 by Vsavilov          #+#    #+#             */
+/*   Updated: 2021/12/17 18:22:18 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fdf.h>
 
-int	key_hook(int keycode)
+void	draw_bresenham(t_fdf *fdf, t_ang *ang)
 {
-	if (keycode == ESC)
-		exit(0);
-	return (0);
-}
-
-int	x_close(int keycode, t_fdf *fdf)
-{
-	(void)keycode;
-	(void)fdf;
-	exit(0);
-	return (0);
+	(void)ang;
+	mlx_string_put(fdf->mlx, fdf->win, fdf->xyz.x, fdf->xyz.y, WHITE, "hello");
 }

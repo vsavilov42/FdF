@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_file.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/17 18:24:13 by Vsavilov          #+#    #+#             */
+/*   Updated: 2021/12/17 18:26:30 by Vsavilov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <fdf.h>
 
 void	parse_map(t_fdf *fdf, char *cmap)
@@ -10,7 +22,8 @@ void	parse_map(t_fdf *fdf, char *cmap)
 
 int	get_color(char *clr)
 {
-	while ((*clr && ft_isdigit(*clr)) || *clr == '+'|| *clr == '-' || *clr == ',')
+	while ((*clr && ft_isdigit(*clr)) || *clr == '+'
+		|| *clr == '-' || *clr == ',')
 		clr++;
 	if (*clr && (*clr == 'x'))
 		return (hex_color(clr + 1));
@@ -21,11 +34,11 @@ int	get_color(char *clr)
 
 void	cord_colors(t_fdf *fdf, char *cmap)
 {
-	int fd;
-	int x;
-	int y;
-	char *ln;
-	char **split;
+	int		fd;
+	int		x;
+	int		y;
+	char	*ln;
+	char	**split;
 
 	x = -1;
 	fd = open(cmap, O_RDONLY);
@@ -47,7 +60,7 @@ void	cord_colors(t_fdf *fdf, char *cmap)
 
 void	memory_map(t_fdf *fdf)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	fdf->cord = (int **)ft_calloc(1, (sizeof(int *) * fdf->height));
@@ -61,8 +74,8 @@ void	memory_map(t_fdf *fdf)
 
 void	open_map(t_fdf *fdf, char *map)
 {
-	int fd;
-	char *ln;
+	int		fd;
+	char	*ln;
 
 	fd = open(map, O_RDONLY);
 	if (fd < 0)

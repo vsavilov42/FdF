@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:10:35 by Vsavilov          #+#    #+#             */
-/*   Updated: 2021/12/15 17:34:10 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2021/12/17 17:34:35 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 void	init_structs(t_fdf *fdf);
 void	init_fdf(t_fdf	*fdf);
-//void	init_map(t_map	map);
 void	init_xyz(t_xyz xyz);
 void	init_img(t_img	img);
 
@@ -40,12 +39,7 @@ int	x_close(int keycode, t_fdf *fdf);
 int	tmarg(void);
 int	invmap(void);
 int	emap(void);
-
-/* mlx_functions.c */
-
-void	my_mlx_put_pixel(t_img img, t_xyz xyz);
-void	mlx_control_keys(t_fdf *fdf);
-void	mlx_start_img(t_fdf *fdf);
+int	eang(void);
 
 /* utils.c */
 
@@ -54,5 +48,19 @@ int	count_nums(char *map);
 int	hex_color(char	*clr);
 void	min_max_z(t_fdf *fdf);
 
+/* mlx_functions.c */
+
+void	my_mlx_put_pixel(t_img img, t_xyz xyz);
+void	mlx_control_keys(t_fdf *fdf);
+void	mlx_start_img(t_fdf *fdf);
+void	mlx_managment(t_fdf *fdf);
+
+/* mlx_utils.c */
+
+void	init_ang(t_fdf *fdf, t_ang *ang);
+
+/* draw.c */
+
+void	draw_bresenham(t_fdf *fdf , t_ang *ang);
 
 #endif

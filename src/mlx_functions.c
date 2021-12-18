@@ -2,15 +2,22 @@
 
 void	mlx_start_img(t_fdf *fdf)
 {
-//	int i = -1;
+	t_ang *ang;
+
+	ang = (t_ang *)ft_calloc(1, (sizeof(t_ang)));
+		if (!ang)
+			exit(eang());
+	init_ang(fdf, ang);
+	mlx_managment(fdf);
+	draw_bresenham(fdf, ang);
+	mlx_loop(fdf->mlx);
+}
+
+void	mlx_managment(t_fdf *fdf)
+{
 	mlx_control_keys(fdf);
-	fdf->img.addrs = mlx_get_data_addr(fdf->img.img, &fdf->img.bpp, &fdf->img.ln_len, &fdf->img.endian);	
-/*	while (++i < 720)
-	{
-		my_mlx_put_pixel(fdf->img, fdf->xyz);
-		fdf->xyz.x++;
-		fdf->xyz.y++;
-	}*/
+	fdf->img.addrs = mlx_get_data_addr(fdf->img.img, &fdf->img.bpp,
+			&fdf->img.ln_len, &fdf->img.endian);	
 	my_mlx_put_pixel(fdf->img, fdf->xyz);
 	mlx_put_image_to_window(fdf->mlx, fdf->win, fdf->img.img, 0, 0);
 }

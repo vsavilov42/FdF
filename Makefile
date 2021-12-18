@@ -6,7 +6,7 @@
 #    By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/15 15:54:01 by vsavilov          #+#    #+#              #
-#    Updated: 2021/12/13 23:23:50 by Vsavilov         ###   ########.fr        #
+#    Updated: 2021/12/17 17:19:57 by Vsavilov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,6 +63,8 @@ SRCS_NAME = fdf.c \
 	error_msg.c \
 	mlx_functions.c \
 	utils.c \
+	draw.c \
+	mlx_utils.c \
 	read_file.c
 
 #####################

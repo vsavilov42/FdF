@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 23:37:59 by Vsavilov          #+#    #+#             */
-/*   Updated: 2021/12/15 17:34:51 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2021/12/17 17:28:14 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,6 @@ void	init_img(t_img img)
 	img.bpp = 0;
 	img.ln_len = 0;
 }
-
-/*void	init_map(t_map map)
-{
-	map.max_z = 0;
-	map.min_z = 0;
-}*/
 
 void	init_xyz(t_xyz xyz)
 {
