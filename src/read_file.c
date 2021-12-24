@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 18:24:13 by Vsavilov          #+#    #+#             */
-/*   Updated: 2021/12/17 18:26:30 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2021/12/22 13:01:19 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,16 @@ void	parse_map(t_fdf *fdf, char *cmap)
 	min_max_z(fdf);
 }
 
-int	get_color(char *clr)
+int	get_color(t_fdf *fdf, char *clr)
 {
 	while ((*clr && ft_isdigit(*clr)) || *clr == '+'
 		|| *clr == '-' || *clr == ',')
 		clr++;
 	if (*clr && (*clr == 'x'))
+	{
+		fdf->is_color = 1;
 		return (hex_color(clr + 1));
+	}
 	else
 		return (WHITE);
 	return (0);
@@ -50,7 +53,7 @@ void	cord_colors(t_fdf *fdf, char *cmap)
 		while (++y < fdf->width)
 		{
 			fdf->cord[x][y] = ft_atoi(split[y]);
-			fdf->colors[x][y] = get_color(split[y]);
+			fdf->colors[x][y] = get_color(fdf, split[y]);
 		}
 		free_split(split);
 		free(ln);

@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:10:54 by Vsavilov          #+#    #+#             */
-/*   Updated: 2021/12/17 17:00:00 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2021/12/22 13:04:38 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,11 @@ typedef struct s_fdf
 	int	height;
 	int	**cord;
 	int	**colors;
+	int	is_color;
 	struct	s_img	img;
 	struct	s_map	map;
 	struct	s_xyz	xyz;
+	struct	s_ang	ang;
 }	t_fdf;
 
 #endif

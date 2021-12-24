@@ -6,7 +6,7 @@
 #    By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/15 15:54:01 by vsavilov          #+#    #+#              #
-#    Updated: 2021/12/17 17:19:57 by Vsavilov         ###   ########.fr        #
+#    Updated: 2021/12/24 17:13:35 by Vsavilov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,14 +57,16 @@ MLX_PATH = minilibx_macos
 ########################
 
 SRCS_NAME = fdf.c \
+	utils.c \
 	init_struct.c \
 	get_next_line.c \
 	keys_close.c \
 	error_msg.c \
 	mlx_functions.c \
-	utils.c \
-	draw.c \
 	mlx_utils.c \
+	draw.c \
+	draw_utils.c \
+	colors.c \
 	read_file.c
 
 #####################
@@ -97,8 +99,6 @@ LMLX = $(LIB_PATH)/$(MLX_PATH)
 #################################
 
 all: $(NAME)
-
-debug: $(NAME)
 
 #######################
 ###   Objects dir   ###

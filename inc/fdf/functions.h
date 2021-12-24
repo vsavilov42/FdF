@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:10:35 by Vsavilov          #+#    #+#             */
-/*   Updated: 2021/12/17 17:34:35 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2021/12/24 17:05:41 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	parse_map(t_fdf *fdf, char *map);
 void	open_map(t_fdf *fdf, char *map);
 void	memory_map(t_fdf *fdf);
 void	cord_colors(t_fdf *fdf, char *cmap);
-int	get_color(char *clr);
+int	get_color(t_fdf *fdf, char *clr);
 
 /* keys_close.c */
 
@@ -61,6 +61,22 @@ void	init_ang(t_fdf *fdf, t_ang *ang);
 
 /* draw.c */
 
-void	draw_bresenham(t_fdf *fdf , t_ang *ang);
+void	draw_bresenham(t_fdf *fdf);
+void	bresenham(t_fdf *fdf, t_xyz f_px, t_xyz l_px);
+t_xyz	new_pixel(t_fdf *fdf, int x, int y);
+t_xyz	get_cords(t_ang *ang, t_xyz xyz);
+
+/* draw_utils.c */
+
+int	sign_bres(int delta);
+void	rotatex(t_ang *ang, int *y, int *z);
+void	rotatey(t_ang *ang, int *x, int *z);
+void	rotatez(t_ang *ang, int *x, int *y);
+void	pov_iso(t_ang *ang, int *x, int *y, int *z);
+
+/* colors.c */
+
+int	colorxy(t_xyz now, t_xyz first, t_xyz last, t_xyz tmp);
+int	colorz(t_fdf *fdf, int z);
 
 #endif
