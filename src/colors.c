@@ -46,9 +46,9 @@ int colorz(t_fdf *fdf, int z)
 	else if (perc < 0.4)
 		return (AQUAMARINE);
 	else if (perc < 0.6)
-		return (BLUE);
+		return (BROWN);
 	else if (perc < 0.8)
 		return (BLUE_GREEN);
 	else
-		return (DARK_BLUE);
+		return (GREEN);
 }

@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 18:22:17 by Vsavilov          #+#    #+#             */
-/*   Updated: 2021/12/24 17:07:30 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2021/12/28 15:47:06 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,38 @@
 
 void	bresenham(t_fdf *fdf, t_xyz f_px, t_xyz l_px)
 {
-	(void)fdf;
-	(void)f_px;
-	(void)l_px;
+	t_xyz	sign;
+	t_xyz	fdpx;
+	t_xyz	delta;
+	int	tmp;
+	int	line;
+
+	init_bresenham(&f_px, &l_px, &sign, &delta);
+	line = (delta.x - delta.y);
+	fdpx = f_px;
+	while (fdpx.x != l_px.x || fdpx.y != l_px.y)
+	{
+		my_mlx_put_pixel(fdf->img, fdpx.x, fdpx.y, colorxy(fdpx, f_px, l_px, delta));
+		tmp = line * 2;
+		if (tmp > -delta.y)
+		{
+			line -= delta.y;
+			fdpx.x += sign.x;
+		}
+		if (tmp < delta.x)
+		{
+			line += delta.x;
+			fdpx.y += sign.y;
+		}
+	}
 }
 
 void	draw_bresenham(t_fdf *fdf)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
+	ft_bzero(fdf->img.addrs, WIN_H * WIN_W * (fdf->img.bpp / 8));
 	if (fdf->ang.zoom)
 	{
 		y = -1;
@@ -43,7 +65,7 @@ void	draw_bresenham(t_fdf *fdf)
 			}
 		}
 	}
-	mlx_string_put(fdf->mlx, fdf->win, fdf->xyz.x, fdf->xyz.y, WHITE, "FdF map");
+	mlx_put_image_to_window(fdf->mlx, fdf->win, fdf->img.img, (WIN_W/2), 0);
 }
 
 t_xyz	get_cords(t_ang *ang, t_xyz xyz)
@@ -54,7 +76,7 @@ t_xyz	get_cords(t_ang *ang, t_xyz xyz)
 	rotatex(ang, &xyz.y, &xyz.z);
 	rotatey(ang, &xyz.x, &xyz.z);
 	rotatez(ang, &xyz.x, &xyz.y);
-	pov_iso(ang, &xyz.x, &xyz.y, &xyz.z);
+	pov_iso(ang, &xyz.x, &xyz.y, xyz.z);
 	return (xyz);
 }
 

@@ -11,39 +11,38 @@ void	mlx_start_img(t_fdf *fdf)
 	mlx_managment(fdf);
 	fdf->ang = *ang;
 	draw_bresenham(fdf);
+	mlx_control_keys(fdf);
 	mlx_loop(fdf->mlx);
 	free(ang);
 }
 
 void	mlx_managment(t_fdf *fdf)
 {
-	mlx_control_keys(fdf);
 	fdf->img.addrs = mlx_get_data_addr(fdf->img.img, &fdf->img.bpp,
-			&fdf->img.ln_len, &fdf->img.endian);	
-	my_mlx_put_pixel(fdf->img, fdf->xyz);
-	mlx_put_image_to_window(fdf->mlx, fdf->win, fdf->img.img, 0, 0);
+			&fdf->img.ln_len, &fdf->img.endian);
+
 }
 
-void	my_mlx_put_pixel(t_img img, t_xyz xyz)
+void	my_mlx_put_pixel(t_img img, int x, int y, int color)
 {
 	int pixel;
 
-	if (xyz.y >= WIN_H || xyz.x >= WIN_H || xyz.x < 0 || xyz.y < 0)
+	if (y >= WIN_H || x >= WIN_H || x < 0 || y < 0)
 		return ;
-	pixel = xyz.y * img.ln_len + xyz.x * (img.bpp / 8);
+	pixel = y * img.ln_len + x * (img.bpp / 8);
 	if (img.endian == 0)
 	{
-		img.addrs[pixel + 0] = (xyz.color) & 0xFF;
-		img.addrs[pixel + 1] = (xyz.color >> 8) & 0xFF;
-		img.addrs[pixel + 2] = (xyz.color >> 16) & 0xFF;
-		img.addrs[pixel + 3] = (xyz.color >> 24);	
+		img.addrs[pixel + 0] = (color) & 0xFF;
+		img.addrs[pixel + 1] = (color >> 8) & 0xFF;
+		img.addrs[pixel + 2] = (color >> 16) & 0xFF;
+		img.addrs[pixel + 3] = (color >> 24);	
 	}
 	else if (img.endian == 1)
 	{
-		img.addrs[pixel + 0] = (xyz.color >> 24);
-		img.addrs[pixel + 1] = (xyz.color >> 16) & 0xFF;
-		img.addrs[pixel + 2] = (xyz.color >> 8) & 0xFF;
-		img.addrs[pixel + 3] = (xyz.color) & 0xFF;	
+		img.addrs[pixel + 0] = (color >> 24);
+		img.addrs[pixel + 1] = (color >> 16) & 0xFF;
+		img.addrs[pixel + 2] = (color >> 8) & 0xFF;
+		img.addrs[pixel + 3] = (color) & 0xFF;	
 	}
 }
 

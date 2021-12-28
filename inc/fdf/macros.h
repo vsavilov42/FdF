@@ -23,4 +23,8 @@
 #  define ESC 53
 # endif
 
+# ifndef KEY_P
+#  define KEY_P 35
+# endif
+
 #endif
