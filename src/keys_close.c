@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 18:21:31 by Vsavilov          #+#    #+#             */
-/*   Updated: 2021/12/28 15:43:28 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2021/12/28 17:08:27 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	key_hook(int keycode, t_fdf *fdf)
 			fdf->ang.isom = 0;
 		else
 			fdf->ang.isom = 1;
+	draw_bresenham(fdf);
 	}
 	return (0);
 }

@@ -39,10 +39,11 @@ void	pov_iso(t_ang *ang, int *x, int *y, int z)
 	int last_x;
 	int last_y;
 
-	if (ang->isom)
+	printf("%d\nIsom_dentro_func", ang->isom);
+	if (!ang->isom)
 		return ;
 	last_x = *x;
 	last_y = *y;
 	*x = (last_x - last_y) * cos(0.523599);
-	*y = z + (last_x - last_y) * sin(0.523599);
+	*y = -z + (last_x - last_y) * sin(0.523599);
 }

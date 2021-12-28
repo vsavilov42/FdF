@@ -10,10 +10,9 @@ void	mlx_start_img(t_fdf *fdf)
 	init_ang(fdf, ang);
 	mlx_managment(fdf);
 	fdf->ang = *ang;
-	draw_bresenham(fdf);
 	mlx_control_keys(fdf);
+	draw_bresenham(fdf);
 	mlx_loop(fdf->mlx);
-	free(ang);
 }
 
 void	mlx_managment(t_fdf *fdf)
