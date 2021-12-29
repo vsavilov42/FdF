@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 18:22:17 by Vsavilov          #+#    #+#             */
-/*   Updated: 2021/12/28 17:04:29 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2021/12/28 21:31:36 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ t_xyz	get_cords(t_ang *ang, t_xyz xyz)
 	rotatey(ang, &xyz.x, &xyz.z);
 	rotatez(ang, &xyz.x, &xyz.y);
 	pov_iso(ang, &xyz.x, &xyz.y, xyz.z);
-	printf("X%d Y%d Z%d\n", xyz.x, xyz.y, xyz.z);
 	return (xyz);
 }
 
