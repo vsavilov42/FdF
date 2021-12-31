@@ -1,14 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   colors.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/31 17:09:40 by Vsavilov          #+#    #+#             */
+/*   Updated: 2021/12/31 17:16:02 by Vsavilov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <fdf.h>
 
-static int bright(int first, int last, int perc)
+static int	bright(int first, int last, int perc)
 {
-	return ((int)(1 - perc) * first + perc * last);
+	return ((int)(1 - perc) *first + perc * last);
 }
 
-static double get_percent(int now, int first, int last)
+static double	get_percent(int now, int first, int last)
 {
-	double f_pix;
-	double lt_pix;
+	double	f_pix;
+	double	lt_pix;
 
 	f_pix = now - first;
 	lt_pix = last - first;
@@ -17,12 +29,12 @@ static double get_percent(int now, int first, int last)
 	return (f_pix / lt_pix);
 }
 
-int colorxy(t_xyz now, t_xyz first, t_xyz last, t_xyz tmp)
+int	colorxy(t_xyz now, t_xyz first, t_xyz last, t_xyz tmp)
 {
-	int r;
-	int g;
-	int b;	
-	double perc;
+	int		r;
+	int		g;
+	int		b;	
+	double	perc;
 
 	if (now.color == last.color)
 		return (now.color);
@@ -36,9 +48,9 @@ int colorxy(t_xyz now, t_xyz first, t_xyz last, t_xyz tmp)
 	return ((r << 16) | (g << 8) | b);
 }
 
-int colorz(t_fdf *fdf, int z)
+int	colorz(t_fdf *fdf, int z)
 {
-	double perc;
+	double	perc;
 
 	perc = get_percent(z, fdf->map.min_z, fdf->map.max_z);
 	if (perc < 0.2)

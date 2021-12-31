@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mlx_functions.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/31 17:18:50 by Vsavilov          #+#    #+#             */
+/*   Updated: 2021/12/31 17:20:00 by Vsavilov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <fdf.h>
 
 void	mlx_start_img(t_fdf *fdf)
@@ -12,7 +24,7 @@ void	mlx_start_img(t_fdf *fdf)
 
 void	my_mlx_put_pixel(t_img img, int x, int y, int color)
 {
-	int pixel;
+	int	pixel;
 
 	if (y >= WIN_H || x >= WIN_W || x < 0 || y < 0)
 		return ;
@@ -22,19 +34,19 @@ void	my_mlx_put_pixel(t_img img, int x, int y, int color)
 		img.addrs[pixel + 0] = (color) & 0xFF;
 		img.addrs[pixel + 1] = (color >> 8) & 0xFF;
 		img.addrs[pixel + 2] = (color >> 16) & 0xFF;
-		img.addrs[pixel + 3] = (color >> 24);	
+		img.addrs[pixel + 3] = (color >> 24);
 	}
 	else if (img.endian == 1)
 	{
 		img.addrs[pixel + 0] = (color >> 24);
 		img.addrs[pixel + 1] = (color >> 16) & 0xFF;
 		img.addrs[pixel + 2] = (color >> 8) & 0xFF;
-		img.addrs[pixel + 3] = (color) & 0xFF;	
+		img.addrs[pixel + 3] = (color) & 0xFF;
 	}
 }
 
 void	mlx_control_keys(t_fdf *fdf)
 {
-	mlx_hook(fdf->win, 2, 1L<<0, key_hook, fdf);
-	mlx_hook(fdf->win, 17, 1L<<17, x_close, fdf);
+	mlx_hook(fdf->win, 2, 1L << 0, key_hook, fdf);
+	mlx_hook(fdf->win, 17, 1L << 17, x_close, fdf);
 }

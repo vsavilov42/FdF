@@ -6,12 +6,12 @@
 /*   By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 18:15:31 by vsavilov          #+#    #+#             */
-/*   Updated: 2021/11/22 18:38:45 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2021/12/31 17:28:07 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_BONUS_H
-# define GET_NEXT_LINE_BONUS_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 # ifndef FDM
 #  define FDM 2048
 # endif

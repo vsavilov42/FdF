@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 23:37:59 by Vsavilov          #+#    #+#             */
-/*   Updated: 2021/12/24 16:18:51 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2021/12/31 17:08:29 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ void	init_bresenham(t_xyz *first, t_xyz *last, t_xyz *sign, t_xyz *delta)
 {
 	delta->x = sign_bres(last->x - first->x);
 	sign->x = -1;
-	if(first->x < last->x)
+	if (first->x < last->x)
 		sign->x = 1;
 	delta->y = sign_bres(last->y - first->y);
 	sign->y = -1;
-	if(first->y < last->y)
+	if (first->y < last->y)
 		sign->y = 1;
 }

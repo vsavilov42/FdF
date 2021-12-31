@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 18:21:31 by Vsavilov          #+#    #+#             */
-/*   Updated: 2021/12/31 16:46:07 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2021/12/31 17:16:39 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	key_hook(int keycode, t_fdf *fdf)
 		exit(0);
 	if (keycode == KEY_R)
 		init_ang(fdf, &fdf->ang);
-	if (keycode == KEY_A || keycode == KEY_S 
+	if (keycode == KEY_A || keycode == KEY_S
 		|| keycode == KEY_D || keycode == KEY_W)
 		key_move(fdf, keycode);
 	if (keycode == KEY_Q || keycode == KEY_E)
@@ -62,14 +62,13 @@ void	key_move(t_fdf *fdf, int keycode)
 		fdf->ang.i_y -= 10;
 }
 
-
 void	key_zoom(t_fdf *fdf, int keycode)
 {
 	if (keycode == KEY_Q)
-		if (fdf->ang.zoom > 0)
+		if (fdf->ang.zoom < 2147483647)
 			fdf->ang.zoom += 0.5;
 	if (keycode == KEY_E)
-		if (fdf->ang.zoom < 2147483647)
+		if (fdf->ang.zoom > 0)
 			fdf->ang.zoom -= 0.5;
 }
 
@@ -87,12 +86,4 @@ void	key_rotation(t_fdf *fdf, int keycode)
 		fdf->ang.ang_z += 0.05;
 	if (keycode == KEY_N)
 		fdf->ang.ang_z -= 0.05;
-
-}
-int	x_close(int keycode, t_fdf *fdf)
-{
-	(void)keycode;
-	(void)fdf;
-	exit(0);
-	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 18:22:17 by Vsavilov          #+#    #+#             */
-/*   Updated: 2021/12/31 13:24:15 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2021/12/31 17:18:18 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,16 @@ void	bresenham(t_fdf *fdf, t_xyz f_px, t_xyz l_px)
 	t_xyz	sign;
 	t_xyz	fdpx;
 	t_xyz	delta;
-	int	tmp;
-	int	line;
+	int		tmp;
+	int		line;
 
 	init_bresenham(&f_px, &l_px, &sign, &delta);
 	line = (delta.x - delta.y);
 	fdpx = f_px;
 	while (fdpx.x != l_px.x || fdpx.y != l_px.y)
 	{
-		my_mlx_put_pixel(fdf->img, fdpx.x, fdpx.y, colorxy(fdpx, f_px, l_px, delta));
+		my_mlx_put_pixel(fdf->img, fdpx.x, fdpx.y,
+			colorxy(fdpx, f_px, l_px, delta));
 		tmp = line * 2;
 		if (tmp > -delta.y)
 		{
@@ -56,12 +57,12 @@ void	draw_bresenham(t_fdf *fdf)
 			{
 				if (x < fdf->width -1)
 					bresenham(fdf,
-							get_cords(&fdf->ang, new_pixel(fdf, x, y)),
-							get_cords(&fdf->ang, new_pixel(fdf, x + 1, y)));
+						get_cords(&fdf->ang, new_pixel(fdf, x, y)),
+						get_cords(&fdf->ang, new_pixel(fdf, x + 1, y)));
 				if (y < fdf->height - 1)
 					bresenham(fdf,
-							get_cords(&fdf->ang, new_pixel(fdf, x, y)),
-							get_cords(&fdf->ang, new_pixel(fdf, x, y + 1)));
+						get_cords(&fdf->ang, new_pixel(fdf, x, y)),
+						get_cords(&fdf->ang, new_pixel(fdf, x, y + 1)));
 			}
 		}
 	}
@@ -84,7 +85,7 @@ t_xyz	get_cords(t_ang *ang, t_xyz xyz)
 
 t_xyz	new_pixel(t_fdf *fdf, int x, int y)
 {
-	t_xyz n_pxl;
+	t_xyz	n_pxl;
 
 	n_pxl.x = x;
 	n_pxl.y = y;

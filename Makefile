@@ -6,7 +6,7 @@
 #    By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/15 15:54:01 by vsavilov          #+#    #+#              #
-#    Updated: 2021/12/24 17:13:35 by Vsavilov         ###   ########.fr        #
+#    Updated: 2021/12/31 17:39:14 by Vsavilov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -148,4 +148,8 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+funsiona:
+	norminette $(INC_PATH)
+	norminette $(SRC_PATH)
+
+.PHONY: all clean fclean re funsiona

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_utils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/31 17:17:03 by Vsavilov          #+#    #+#             */
+/*   Updated: 2021/12/31 17:17:04 by Vsavilov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <fdf.h>
 
 int	sign_bres(int delta)
@@ -9,7 +21,7 @@ int	sign_bres(int delta)
 
 void	rotatex(t_ang *ang, int *y, int *z)
 {
-	float last_y;
+	float	last_y;
 
 	last_y = *y;
 	*y = (last_y * cos(ang->ang_x)) + (*z * sin(ang->ang_x));
@@ -18,7 +30,7 @@ void	rotatex(t_ang *ang, int *y, int *z)
 
 void	rotatey(t_ang *ang, int *x, int *z)
 {
-	float last_x;
+	float	last_x;
 
 	last_x = *x;
 	*x = (last_x * cos(ang->ang_y)) + (*z * sin(ang->ang_y));
@@ -27,7 +39,7 @@ void	rotatey(t_ang *ang, int *x, int *z)
 
 void	rotatez(t_ang *ang, int *x, int *y)
 {
-	float last_x;
+	float	last_x;
 
 	last_x = *x;
 	*x = (*x * cos(ang->ang_z)) - (*y * sin(ang->ang_z));
@@ -36,8 +48,8 @@ void	rotatez(t_ang *ang, int *x, int *y)
 
 void	pov_iso(t_ang *ang, int *x, int *y, int z)
 {
-	int last_x;
-	int last_y;
+	int	last_x;
+	int	last_y;
 
 	if (!ang->isom)
 		return ;
