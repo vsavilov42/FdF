@@ -2,31 +2,19 @@
 
 void	mlx_start_img(t_fdf *fdf)
 {
-	t_ang *ang;
-
-	ang = (t_ang *)ft_calloc(1, (sizeof(t_ang)));
-		if (!ang)
-			exit(eang());
-	init_ang(fdf, ang);
-	mlx_managment(fdf);
-	fdf->ang = *ang;
+	init_ang(fdf, &fdf->ang);
 	mlx_control_keys(fdf);
-	draw_bresenham(fdf);
-	mlx_loop(fdf->mlx);
-}
-
-void	mlx_managment(t_fdf *fdf)
-{
 	fdf->img.addrs = mlx_get_data_addr(fdf->img.img, &fdf->img.bpp,
 			&fdf->img.ln_len, &fdf->img.endian);
-
+	draw_bresenham(fdf);
+	mlx_loop(fdf->mlx);
 }
 
 void	my_mlx_put_pixel(t_img img, int x, int y, int color)
 {
 	int pixel;
 
-	if (y >= WIN_H || x >= WIN_H || x < 0 || y < 0)
+	if (y >= WIN_H || x >= WIN_W || x < 0 || y < 0)
 		return ;
 	pixel = y * img.ln_len + x * (img.bpp / 8);
 	if (img.endian == 0)
@@ -47,6 +35,6 @@ void	my_mlx_put_pixel(t_img img, int x, int y, int color)
 
 void	mlx_control_keys(t_fdf *fdf)
 {
-	mlx_key_hook(fdf->win, key_hook, fdf);
+	mlx_hook(fdf->win, 2, 1L<<0, key_hook, fdf);
 	mlx_hook(fdf->win, 17, 1L<<17, x_close, fdf);
 }

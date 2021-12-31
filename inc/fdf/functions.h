@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:10:35 by Vsavilov          #+#    #+#             */
-/*   Updated: 2021/12/28 15:46:39 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2021/12/31 16:31:00 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ int	get_color(t_fdf *fdf, char *clr);
 /* keys_close.c */
 
 int	key_hook(int keycode, t_fdf *fdf);
+void	key_move(t_fdf *fdf, int keycode);
+void	key_zoom(t_fdf *fdf, int keycode);
+void	key_rotation(t_fdf *fdf, int keycode);
+void	key_height(t_fdf *fdf, int keycode);
 int	x_close(int keycode, t_fdf *fdf);
 
 /* error_msg.c */
@@ -54,7 +58,6 @@ void	min_max_z(t_fdf *fdf);
 void	my_mlx_put_pixel(t_img img, int x, int y, int color);
 void	mlx_control_keys(t_fdf *fdf);
 void	mlx_start_img(t_fdf *fdf);
-void	mlx_managment(t_fdf *fdf);
 
 /* mlx_utils.c */
 
