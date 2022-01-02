@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 14:33:07 by Vsavilov          #+#    #+#             */
-/*   Updated: 2021/12/13 14:41:51 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2022/01/02 17:27:43 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,9 @@ int	ft_atoi_base(const char *num, const char *base)
 {
 	char		*tmp;
 	int			n_base;
-	int			n;
 	long int	pw;
 
 	pw = 1;
-	n = 0;
 	n_base = num_base(base);
 	tmp = (char *)num;
 	if (*num == '-' && num++)

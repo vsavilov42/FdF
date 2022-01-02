@@ -6,7 +6,7 @@
 /*   By: vsavilov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 18:31:57 by vsavilov          #+#    #+#             */
-/*   Updated: 2021/09/21 13:19:24 by vsavilov         ###   ########.fr       */
+/*   Updated: 2022/01/02 17:27:06 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static char	**singleword(char const *s, char c, char **sresult)
 {
-	size_t	i;
+	int		i;
 	size_t	len;
 
 	i = 0;

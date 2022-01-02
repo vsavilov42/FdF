@@ -6,7 +6,7 @@
 /*   By: Vsavilov <Vsavilov@student.42Madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:10:35 by Vsavilov          #+#    #+#             */
-/*   Updated: 2021/12/31 17:27:00 by Vsavilov         ###   ########.fr       */
+/*   Updated: 2022/01/02 14:25:44 by Vsavilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,7 @@
 
 /* init_struct.c */
 
-void	init_structs(t_fdf *fdf);
 void	init_fdf(t_fdf	*fdf);
-void	init_xyz(t_xyz xyz);
-void	init_img(t_img	img);
 void	init_bresenham(t_xyz *first, t_xyz *last, t_xyz *sign, t_xyz *delta);
 
 /* read_file.c */
